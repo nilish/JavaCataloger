@@ -1,0 +1,30 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AuthenticateUserService WSDL service -->
+
+  <service name="AuthenticateUser" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://admin.goynaa"/>
+      <parameter name="wsdlServiceElement" value="AuthenticateUserService"/>
+      <parameter name="schemaQualified" value="http://admin.goynaa"/>
+      <parameter name="wsdlServicePort" value="AuthenticateUser"/>
+      <parameter name="className" value="goynaa.admin.AuthenticateUserSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AuthenticateUser"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="authenticateUser" qname="operNS:authenticateUser" xmlns:operNS="http://admin.goynaa" returnQName="retNS:authenticateUserReturn" xmlns:retNS="http://admin.goynaa" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:email" xmlns:pns="http://admin.goynaa" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://admin.goynaa" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="authenticateUser"/>
+
+  </service>
+</deployment>

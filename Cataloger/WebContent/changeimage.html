@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- loading jQuery from Google storage -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+function showHover(img) {
+   if(img) {
+        img.src = 'images/agami-322.jpg';
+   }
+}
+function showNormal(img) {
+   if(img) {
+        img.src = 'images/agami-321.jpg';
+   }
+}
+
+$(document).ready(function() {
+    $('#ex1').mouseover(function(){
+	showHover(this);
+    }).mouseout(function(){
+	showNormal(this);
+    });
+
+    $('#hlink').mouseover(function(){
+	showHover($('#ex2').get()[0]);
+    }).mouseout(function(){
+	showNormal($('#ex2').get()[0]);
+    });
+});
+</script> 
+</head>
+<body>
+<h1>Example1</h1><br/>
+<img id='ex1' src="images/agami-322.jpg" width="400" height="300"/>
+<hr/>
+
+<h1>Example2</h1><br/>
+<img id='ex2' src="images/agami-322.jpg" width="200" height="300"/> <a href="#" id="hlink">hover this link</a>
+
+</body>
+</html>
